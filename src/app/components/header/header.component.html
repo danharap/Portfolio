@@ -1,0 +1,26 @@
+<header class="header" [class.scrolled]="isScrolled">
+  <nav class="nav">
+    <div class="container">
+      <div class="nav-brand">
+        <a href="#home" class="logo" (click)="scrollToSection('home', $event)">
+          <span class="logo-text">Daniel</span>
+          <span class="logo-accent">H</span>
+        </a>
+      </div>
+      
+      <ul class="nav-links" [class.active]="isMobileMenuOpen">
+        <li><a href="#home" class="nav-link active" (click)="scrollToSection('home', $event)">Home</a></li>
+        <li><a href="#about" class="nav-link" (click)="scrollToSection('about', $event)">About</a></li>
+        <li><a href="#projects" class="nav-link" (click)="scrollToSection('projects', $event)">Projects</a></li>
+        <li><a href="#experience" class="nav-link" (click)="scrollToSection('experience', $event)">Experience</a></li>
+        <li><a href="#contact" class="nav-link" (click)="scrollToSection('contact', $event)">Contact</a></li>
+      </ul>
+
+      <div class="nav-toggle" (click)="toggleMobileMenu()" [class.active]="isMobileMenuOpen">
+        <span class="hamburger"></span>
+        <span class="hamburger"></span>
+        <span class="hamburger"></span>
+      </div>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,42 @@
+<section id="projects" class="projects">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">My Projects</h2>
+      <p class="section-subtitle">Here are some of my recent works</p>
+    </div>
+
+    <div class="project-filters">
+      <button 
+        class="filter-btn" 
+        [class.active]="activeFilter === 'all'"
+        (click)="filterProjects('all')">
+        All Projects
+      </button>
+      <button 
+        class="filter-btn" 
+        [class.active]="activeFilter === 'featured'"
+        (click)="filterProjects('featured')">
+        Featured
+      </button>
+      <button 
+        class="filter-btn" 
+        [class.active]="activeFilter === 'angular'"
+        (click)="filterProjects('angular')">
+        Angular
+      </button>
+      <button 
+        class="filter-btn" 
+        [class.active]="activeFilter === 'react'"
+        (click)="filterProjects('react')">
+        React
+      </button>
+    </div>
+
+    <div class="projects-grid">
+      <app-project-card 
+        *ngFor="let project of filteredProjects" 
+        [project]="project">
+      </app-project-card>
+    </div>
+  </div>
+</section>

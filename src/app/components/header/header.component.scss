@@ -1,0 +1,123 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;  background: rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+
+  &.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.nav {
+  padding: 1rem 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  .logo {
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+    
+    .logo-text {
+      color: #333;
+    }
+    
+    .logo-accent {
+      color: #007bff;
+    }
+  }
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2rem;
+
+  .nav-link {
+    text-decoration: none;
+    color: #666;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+    
+    &:hover,
+    &.active {
+      color: #007bff;
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #007bff;
+      transition: width 0.3s ease;
+    }
+    
+    &:hover::after,
+    &.active::after {
+      width: 100%;
+    }
+  }
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 0.5rem;
+
+  .hamburger {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 3px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    padding: 2rem;
+    transform: translateY(-100vh);
+    transition: transform 0.3s ease;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    
+    &.active {
+      transform: translateY(0);
+    }
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+}

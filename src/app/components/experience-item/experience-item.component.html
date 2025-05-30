@@ -1,0 +1,33 @@
+<div class="timeline-item" [class.timeline-right]="isEven">
+  <div class="timeline-content">
+    <div class="timeline-marker"></div>
+    
+    <div class="experience-card">
+      <div class="experience-header">
+        <h3 class="job-title">{{ experience.title }}</h3>
+        <div class="company-info">
+          <h4 class="company-name">{{ experience.company }}</h4>
+          <span class="location">{{ experience.location }}</span>
+        </div>
+        <span class="period">{{ experience.period }}</span>
+      </div>
+      
+      <p class="job-description">{{ experience.description }}</p>
+      
+      <div class="achievements" *ngIf="experience.achievements.length > 0">
+        <h5>Key Achievements:</h5>
+        <ul>
+          <li *ngFor="let achievement of experience.achievements">
+            {{ achievement }}
+          </li>
+        </ul>
+      </div>
+      
+      <div class="technologies">
+        <span *ngFor="let tech of experience.technologies" class="tech-tag">
+          {{ tech }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
