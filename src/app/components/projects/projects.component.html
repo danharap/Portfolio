@@ -1,11 +1,11 @@
-<section id="projects" class="projects">
+<section id="projects" class="projects" #projectsSection>
   <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">My Projects</h2>
-      <p class="section-subtitle">Here are some of my recent works</p>
+    <div class="section-header scroll-animate">
+      <h2 class="section-title animate-child">My Projects</h2>
+      <p class="section-subtitle animate-child">Here are some of my recent works</p>
     </div>
 
-    <div class="project-filters">
+    <div class="project-filters scroll-animate-scale">
       <button 
         class="filter-btn" 
         [class.active]="activeFilter === 'all'"
@@ -29,13 +29,13 @@
         [class.active]="activeFilter === 'react'"
         (click)="filterProjects('react')">
         React
-      </button>
-    </div>
+      </button>    </div>
 
-    <div class="projects-grid">
+    <div class="projects-grid scroll-animate">
       <app-project-card 
         *ngFor="let project of filteredProjects" 
-        [project]="project">
+        [project]="project"
+        class="animate-child">
       </app-project-card>
     </div>
   </div>

@@ -1,25 +1,24 @@
-<section id="contact" class="contact">
+<section id="contact" class="contact" #contactSection>
   <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Get In Touch</h2>
-      <p class="section-subtitle">Let's work together on your next project</p>
+    <div class="section-header scroll-animate">
+      <h2 class="section-title animate-child">Get In Touch</h2>
+      <p class="section-subtitle animate-child">Let's work together on your next project</p>
     </div>
 
     <div class="contact-content">
-      <div class="contact-info">
-        <h3>Contact Information</h3>
-        <p>Feel free to reach out to me through any of the following channels:</p>
+      <div class="contact-info scroll-animate-left">
+        <h3 class="animate-child">Contact Information</h3>
+        <p class="animate-child">Feel free to reach out to me through any of the following channels:</p>
         
         <div class="contact-items">
-          <div class="contact-item">
+          <div class="contact-item animate-child">
             <i class="fas fa-envelope"></i>
             <div class="contact-details">
               <h4>Email</h4>
               <a [href]="'mailto:' + contactInfo.email">{{ contactInfo.email }}</a>
             </div>
-          </div>
-          
-          <div class="contact-item">
+          </div>          
+          <div class="contact-item animate-child">
             <i class="fas fa-phone"></i>
             <div class="contact-details">
               <h4>Phone</h4>
@@ -27,7 +26,7 @@
             </div>
           </div>
           
-          <div class="contact-item">
+          <div class="contact-item animate-child">
             <i class="fas fa-map-marker-alt"></i>
             <div class="contact-details">
               <h4>Location</h4>
@@ -36,7 +35,7 @@
           </div>
         </div>
         
-        <div class="social-links">
+        <div class="social-links animate-child">
           <a [href]="contactInfo.linkedin" target="_blank" class="social-link">
             <i class="fab fa-linkedin"></i>
           </a>
@@ -47,11 +46,10 @@
             <i class="fab fa-twitter"></i>
           </a>
         </div>
-      </div>
-
-      <div class="contact-form-section">
-        <form class="contact-form" (ngSubmit)="onSubmit()" #contactFormRef="ngForm">
-          <div class="form-group">
+      </div>      
+      <div class="contact-form-section scroll-animate-right">
+        <form class="contact-form animate-child" (ngSubmit)="onSubmit()" #contactFormRef="ngForm">
+          <div class="form-group animate-child">
             <label for="name">Full Name</label>
             <input 
               type="text" 
@@ -62,7 +60,7 @@
               placeholder="Your Name">
           </div>
           
-          <div class="form-group">
+          <div class="form-group animate-child">
             <label for="email">Email Address</label>
             <input 
               type="email" 
@@ -73,9 +71,8 @@
               placeholder="your.email@example.com">
           </div>
           
-          <div class="form-group">
-            <label for="subject">Subject</label>
-            <input 
+          <div class="form-group animate-child">
+            <label for="subject">Subject</label>            <input 
               type="text" 
               id="subject" 
               name="subject"
@@ -84,7 +81,7 @@
               placeholder="Project Inquiry">
           </div>
           
-          <div class="form-group">
+          <div class="form-group animate-child">
             <label for="message">Message</label>
             <textarea 
               id="message" 
@@ -97,7 +94,7 @@
           
           <button 
             type="submit" 
-            class="submit-btn"
+            class="submit-btn animate-child"
             [disabled]="!contactFormRef.form.valid">
             Send Message
           </button>

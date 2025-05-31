@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
+import { ScrollAnimationService } from '../../services/scroll-animation.service';
 
 @Component({
   selector: 'app-about',
@@ -6,6 +7,18 @@ import { Component } from '@angular/core';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss']
 })
-export class AboutComponent {
-  
+export class AboutComponent implements AfterViewInit, OnDestroy {
+  @ViewChild('aboutSection', { static: false }) aboutSection!: ElementRef;
+
+  constructor(private scrollAnimationService: ScrollAnimationService) {}
+
+  ngAfterViewInit() {
+    if (this.aboutSection) {
+      this.scrollAnimationService.observeElement(this.aboutSection);
+    }
+  }
+
+  ngOnDestroy() {
+    this.scrollAnimationService.disconnectObserver();
+  }
 }

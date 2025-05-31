@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
+import { ScrollAnimationService } from '../../services/scroll-animation.service';
 
 @Component({
   selector: 'app-experience',
@@ -6,7 +7,8 @@ import { Component } from '@angular/core';
   templateUrl: './experience.component.html',
   styleUrls: ['./experience.component.scss']
 })
-export class ExperienceComponent {
+export class ExperienceComponent implements AfterViewInit, OnDestroy {
+  @ViewChild('experienceSection', { static: false }) experienceSection!: ElementRef;
   experiences = [
     {
       id: 1,
@@ -47,8 +49,19 @@ export class ExperienceComponent {
         'Delivered 20+ high-quality web projects',
         'Achieved 98% client satisfaction rate',
         'Optimized websites for mobile-first approach'
-      ],
-      technologies: ['JavaScript', 'HTML5', 'CSS3', 'jQuery', 'Bootstrap']
+      ],      technologies: ['JavaScript', 'HTML5', 'CSS3', 'jQuery', 'Bootstrap']
     }
   ];
+
+  constructor(private scrollAnimationService: ScrollAnimationService) {}
+
+  ngAfterViewInit() {
+    if (this.experienceSection) {
+      this.scrollAnimationService.observeElement(this.experienceSection);
+    }
+  }
+
+  ngOnDestroy() {
+    this.scrollAnimationService.disconnectObserver();
+  }
 }

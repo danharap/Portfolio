@@ -1,33 +1,37 @@
-<section id="home" class="hero">
+<section #heroSection id="home" class="hero scroll-animate">
   <div class="container">
     <div class="hero-content">
-      <h1 class="hero-title">
+      <h1 class="hero-title animate-child">
         Hi, I'm <span class="name-highlight">Daniel Harapiak</span>
       </h1>
-      <h2 class="hero-subtitle">Full-Stack Developer</h2>
-      <p class="hero-description">
+      <h2 class="hero-subtitle animate-child">
+        <span class="typing-text">{{ displayText }}</span>
+        <span class="cursor">|</span>
+      </h2>
+      <p class="hero-description animate-child">
         I create amazing web experiences with modern technologies. 
         Passionate about clean code, user experience, and innovative solutions.
       </p>
-      <div class="hero-buttons">
+      <div class="hero-buttons animate-child">
         <a href="#projects" class="btn btn-primary">View My Work</a>
         <a href="#contact" class="btn btn-secondary">Get In Touch</a>
       </div>
     </div>
-    <div class="hero-visual">
+    <div class="hero-visual animate-child">
       <div class="code-animation">
-        <div class="code-line">
+        <div class="code-line animate-stagger-1">
           <span class="code-keyword">const</span>
-          <span class="code-variable">developer</span>
-          <span class="code-operator">=</span>
+          <span class="code-variable"> developer</span>
+          <span class="code-operator"> = </span>
           <span class="code-string">"Daniel"</span>
-        </div>        <div class="code-line">
+        </div>
+        <div class="code-line animate-stagger-2">
           <span class="code-keyword">function</span>
-          <span class="code-function">createAwesome</span>
+          <span class="code-function"> create</span>
           <span class="code-bracket">()</span>
           <span class="code-bracket">{{ '{' }}</span>
         </div>
-        <div class="code-line code-indent">
+        <div class="code-line code-indent animate-stagger-3">
           <span class="code-keyword">return</span>
           <span class="code-string">"Amazing Web Apps"</span>
         </div>

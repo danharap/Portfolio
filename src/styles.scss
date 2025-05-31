@@ -351,39 +351,71 @@ html {
   }
 }
 
-// Animation utility classes
-.animate-fade-in {
-  animation: fadeIn 0.6s ease-out;
+// Professional entrance animations
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out;
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-.animate-fade-in-down {
-  animation: fadeInDown 0.6s ease-out;
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-.animate-fade-in-left {
-  animation: fadeInLeft 0.6s ease-out;
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-.animate-fade-in-right {
-  animation: fadeInRight 0.6s ease-out;
+// Professional loading states
+.loading-section {
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  .loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--primary-color);
+    border-top: 3px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
 }
 
-.animate-bounce-in {
-  animation: bounceIn 0.8s ease-out;
-}
-
-// Stagger delays for multiple elements
-.animate-stagger {
-  &:nth-child(1) { animation-delay: 0.1s; }
-  &:nth-child(2) { animation-delay: 0.2s; }
-  &:nth-child(3) { animation-delay: 0.3s; }
-  &:nth-child(4) { animation-delay: 0.4s; }
-  &:nth-child(5) { animation-delay: 0.5s; }
-  &:nth-child(6) { animation-delay: 0.6s; }
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 // Scrollbar styling
@@ -413,4 +445,136 @@ html {
 ::-moz-selection {
   background: var(--primary-color);
   color: var(--white);
+}
+
+// Enhanced Scroll Animation Effects
+.scroll-animate-blur {
+  opacity: 0;
+  transform: translateY(50px);
+  filter: blur(10px);
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.scroll-animate-rotate {
+  opacity: 0;
+  transform: translateY(50px) rotate(10deg);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.animate-in {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+// Advanced stagger animation with improved timing
+.animate-stagger-advanced {
+  &:nth-child(1) { 
+    animation-delay: 0.1s; 
+    transition-delay: 0.1s;
+  }
+  &:nth-child(2) { 
+    animation-delay: 0.2s; 
+    transition-delay: 0.2s;
+  }
+  &:nth-child(3) { 
+    animation-delay: 0.3s; 
+    transition-delay: 0.3s;
+  }
+  &:nth-child(4) { 
+    animation-delay: 0.4s; 
+    transition-delay: 0.4s;
+  }
+  &:nth-child(5) { 
+    animation-delay: 0.5s; 
+    transition-delay: 0.5s;
+  }
+  &:nth-child(6) { 
+    animation-delay: 0.6s; 
+    transition-delay: 0.6s;
+  }
+  &:nth-child(7) { 
+    animation-delay: 0.7s; 
+    transition-delay: 0.7s;
+  }
+  &:nth-child(8) { 
+    animation-delay: 0.8s; 
+    transition-delay: 0.8s;
+  }
+}
+
+// Professional reveal animations
+.reveal-on-scroll {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--background-color), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  &.animate-in::before {
+    transform: translateX(100%);
+  }
+}
+
+// Improved performance for animations
+.scroll-animate,
+.scroll-animate-left,
+.scroll-animate-right,
+.scroll-animate-scale,
+.scroll-animate-fade,
+.animate-child {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+// Responsive animation adjustments
+@media (max-width: 768px) {
+  .scroll-animate,
+  .scroll-animate-left,
+  .scroll-animate-right,
+  .scroll-animate-scale {
+    transform: translateY(20px) !important;
+    
+    &.animate-in {
+      transform: translateY(0) !important;
+    }
+  }
+  
+  // Reduced motion for mobile
+  .animate-stagger-advanced {
+    &:nth-child(n) {
+      animation-delay: 0.1s !important;
+      transition-delay: 0.1s !important;
+    }
+  }
+}
+
+// Accessibility: Respect user preferences
+@media (prefers-reduced-motion: reduce) {
+  .scroll-animate,
+  .scroll-animate-left,
+  .scroll-animate-right,
+  .scroll-animate-scale,
+  .scroll-animate-fade,
+  .animate-child {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
 }

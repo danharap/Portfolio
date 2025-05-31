@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
+import { ScrollAnimationService } from '../../services/scroll-animation.service';
 
 @Component({
   selector: 'app-contact',
@@ -6,7 +7,8 @@ import { Component } from '@angular/core';
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss']
 })
-export class ContactComponent {
+export class ContactComponent implements AfterViewInit, OnDestroy {
+  @ViewChild('contactSection', { static: false }) contactSection!: ElementRef;
   contactInfo = {
     email: 'daniel.harapiak@example.com',
     phone: '+1 (555) 123-4567',
@@ -30,12 +32,23 @@ export class ContactComponent {
     this.resetForm();
   }
 
-  resetForm() {
-    this.contactForm = {
+  resetForm() {    this.contactForm = {
       name: '',
       email: '',
       subject: '',
       message: ''
     };
+  }
+
+  constructor(private scrollAnimationService: ScrollAnimationService) {}
+
+  ngAfterViewInit() {
+    if (this.contactSection) {
+      this.scrollAnimationService.observeElement(this.contactSection);
+    }
+  }
+
+  ngOnDestroy() {
+    this.scrollAnimationService.disconnectObserver();
   }
 }
